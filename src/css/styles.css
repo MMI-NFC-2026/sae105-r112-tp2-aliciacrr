@@ -1,5 +1,5 @@
 /* code css à faire */
-/* Le menu prend tout l'écran sans bordure, invisible au début*/
+/* Le menu prend tout l'écran sans bordure, invisible au début avec une transition de 400ms */
 .menu {
   width: 100%;
   height: 100%;
@@ -7,8 +7,9 @@
   transition: 400ms allow-discrete;
   opacity: 0;
 }
+
 /* Empêche de scroller la page derrière quand le menu est ouvert */
-.menu:popover-open {
+html:has(.menu:popover-open) {
   overflow: hidden;
 }
 
@@ -16,31 +17,65 @@
 .burger {
   cursor: pointer;
 }
+
 /* Rend le menu visible quand il s'ouvre */
 .menu:popover-open {
   opacity: 1;
 }
+
 /* État de départ du menu (invisible) pour que l'animation d'apparition marche */
 @starting-style {
   .menu:popover-open {
     opacity: 0;
   }
 }
+
 /* Position de départ du bouton fermer avant qu'il ne tourne */
 @starting-style {
   .menu:popover-open .burger--close {
     transform: none;
   }
 }
+
 /* Fait tourner la croix de 90° quand le menu s'ouvre */
 .menu:popover-open .burger--close {
   transform: rotate(90deg);
   transition: 400ms;
 }
+
 /* Enlève les animations si l'utilisateur les a désactivées sur son téléphone/ordi */
 @media (prefers-reduced-motion: reduce) {
   .menu,
   .menu .burger--close {
     transition: none;
   }
-}/* code css à faire */
+}
+
+/* Styles demandés dans le TP pour l'image et les icônes du menu */
+.media--fullwidth {
+  width: 100%;
+  height: auto;
+}
+
+nav > h4::before {
+  content: url("../../public/icones/book.svg");
+}
+
+nav > ul > li > a::before {
+  content: url("../../public/icones/bag-plus.svg");
+}
+
+nav > ul > li > ul > li > a::before {
+  content: url("../../public/icones/archive.svg");
+}
+nav > h4::before {
+  content: url("../../public/icones/ProiconsAirplaneTakeoff.svg");
+}
+
+nav > ul > li > a::before {
+  content: url("../../public/icones/MingcuteAppleFill.svg");
+}
+
+nav > ul > li > ul > li > a::before {
+  content: url("../../public/icones/MaterialSymbolsLight10kOutline.svg");
+}
